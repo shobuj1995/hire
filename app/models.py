@@ -1,9 +1,12 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-# Create your models here.
-class user(models.Model):
-	user_name=models.CharField(max_length=200)
-	user_email=models.CharField(max_length=200)
-	user_contact=models.CharField(max_length=200)
-	user_password=models.CharField(max_length=200)
-	user_desc = models.CharField(max_length=200)  
+class CustomUser(AbstractUser):
+    gender = models.CharField(null=False,blank=False,default=None,max_length=20)
+    user_type = models.CharField(null=False,blank=False,default=None,max_length=20)
+    mobile_no = models.CharField(null=False,blank=False,default=None,max_length=20)
+
+
+
+    def __str__(self):
+        return self.email
